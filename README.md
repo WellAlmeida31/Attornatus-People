@@ -3,7 +3,7 @@
 Este projeto usa Spring Boot e banco de dados em memória H2
 Aplicação com imagem no Docker Hub e Deploy na Amazon em fargate usando pipeline com AWS CDK e CloudFormation  
 
-## Execução do projeto via Dcoker
+## Execução do projeto via Docker
 Projeto disponível no Docker Hub
 * https://hub.docker.com/repository/docker/wellalmeida31/attornatus-api-cad-pessoa/general
 
@@ -37,6 +37,7 @@ Produção
 ## Download Open API Schema document
 Local
 * http://localhost:8080/v3/api-docs
+
 Produção
 * http://servi-alb01-1vtfb4ap3yuc0-1980127910.us-east-1.elb.amazonaws.com:8080/v3/api-docs
 
