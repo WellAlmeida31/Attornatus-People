@@ -32,13 +32,13 @@ Local
 * http://localhost:8080/swagger-ui/index.html
 
 Produção
-* http://servi-alb01-1vtfb4ap3yuc0-1980127910.us-east-1.elb.amazonaws.com:8080/swagger-ui/index.html
+* http://servi-alb02-7aqhq2sng17-842354884.us-east-1.elb.amazonaws.com:8080/swagger-ui/index.html
 
 ## Download Open API Schema document
 Local
 * http://localhost:8080/v3/api-docs
 
 Produção
-* http://servi-alb01-1vtfb4ap3yuc0-1980127910.us-east-1.elb.amazonaws.com:8080/v3/api-docs
+* http://servi-alb02-7aqhq2sng17-842354884.us-east-1.elb.amazonaws.com:8080/v3/api-docs
 
 
