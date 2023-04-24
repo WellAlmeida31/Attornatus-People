@@ -2,6 +2,7 @@
 
 Este projeto usa Spring Boot e banco de dados em memória H2
 Aplicação com imagem no Docker Hub e Deploy na Amazon em fargate usando pipeline com AWS CDK e CloudFormation  
+Desabilite o CORS no seu navegador para testar via swagger ou use o Postman
 
 ## Execução do projeto via Docker
 Projeto disponível no Docker Hub
