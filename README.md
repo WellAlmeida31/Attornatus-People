@@ -2,8 +2,9 @@
 
 Este projeto usa Spring Boot e banco de dados em memória H2
 Aplicação com imagem no Docker Hub e Deploy na Amazon em fargate usando pipeline com AWS CDK e CloudFormation  
+Desabilite o CORS no seu navegador para testar via swagger ou use o Postman
 
-## Execução do projeto via Dcoker
+## Execução do projeto via Docker
 Projeto disponível no Docker Hub
 * https://hub.docker.com/repository/docker/wellalmeida31/attornatus-api-cad-pessoa/general
 
@@ -32,12 +33,13 @@ Local
 * http://localhost:8080/swagger-ui/index.html
 
 Produção
-* http://servi-alb01-1vtfb4ap3yuc0-1980127910.us-east-1.elb.amazonaws.com:8080/swagger-ui/index.html
+* http://servi-alb02-7aqhq2sng17-842354884.us-east-1.elb.amazonaws.com:8080/swagger-ui/index.html
 
 ## Download Open API Schema document
 Local
 * http://localhost:8080/v3/api-docs
+
 Produção
-* http://servi-alb01-1vtfb4ap3yuc0-1980127910.us-east-1.elb.amazonaws.com:8080/v3/api-docs
+* http://servi-alb02-7aqhq2sng17-842354884.us-east-1.elb.amazonaws.com:8080/v3/api-docs
 
 
