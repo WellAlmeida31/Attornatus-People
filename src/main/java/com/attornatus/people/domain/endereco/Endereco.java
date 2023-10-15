@@ -1,5 +1,6 @@
 package com.attornatus.people.domain.endereco;
 
+import com.attornatus.people.domain.endereco.dto.EnderecoDto;
 import com.attornatus.people.domain.pessoa.Pessoa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

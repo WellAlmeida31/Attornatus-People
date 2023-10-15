@@ -1,5 +1,6 @@
-package com.attornatus.people.domain.endereco;
+package com.attornatus.people.domain.endereco.repository;
 
+import com.attornatus.people.domain.endereco.Endereco;
 import com.attornatus.people.domain.pessoa.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

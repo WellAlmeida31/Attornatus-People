@@ -1,9 +1,10 @@
-package com.attornatus.people.controller;
+package com.attornatus.people.domain.pessoa.controller;
 
-import com.attornatus.people.domain.endereco.EnderecoDto;
-import com.attornatus.people.domain.pessoa.PessoaDto;
-import com.attornatus.people.domain.pessoa.PessoaService;
-import com.attornatus.people.domain.pessoa.PessoaUpdate;
+import com.attornatus.people.domain.endereco.dto.EnderecoDto;
+import com.attornatus.people.domain.pessoa.dto.PessoaDto;
+import com.attornatus.people.domain.pessoa.dto.PessoaDtoNew;
+import com.attornatus.people.domain.pessoa.service.PessoaService;
+import com.attornatus.people.domain.pessoa.dto.PessoaUpdate;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -130,5 +131,10 @@ public class PessoaController {
     @PutMapping("{pessoaId}/enderecos/{enderecoId}/editar")
     public ResponseEntity<EnderecoDto> updateEnderecoPessoa(@PathVariable Long pessoaId, @PathVariable Long enderecoId, @RequestBody @Valid EnderecoDto enderecoDto){
         return ResponseEntity.ok(pessoaService.updateEnderecoPessoa(pessoaId, enderecoId, enderecoDto));
+    }
+
+    @GetMapping("/dto/{pessoaId}")
+    public ResponseEntity<PessoaDtoNew> getPessoaDto(@PathVariable Long pessoaId){
+        return ResponseEntity.ok(pessoaService.getDTOPessoa(pessoaId));
     }
 }

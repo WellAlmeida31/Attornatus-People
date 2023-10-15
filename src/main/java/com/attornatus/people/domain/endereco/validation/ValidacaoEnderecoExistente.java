@@ -1,7 +1,7 @@
 package com.attornatus.people.domain.endereco.validation;
 
-import com.attornatus.people.domain.endereco.EnderecoDto;
-import com.attornatus.people.domain.endereco.EnderecoRepository;
+import com.attornatus.people.domain.endereco.dto.EnderecoDto;
+import com.attornatus.people.domain.endereco.repository.EnderecoRepository;
 import com.attornatus.people.domain.pessoa.Pessoa;
 import com.attornatus.people.domain.pessoa.validation.ValidacaoException;
 import lombok.RequiredArgsConstructor;

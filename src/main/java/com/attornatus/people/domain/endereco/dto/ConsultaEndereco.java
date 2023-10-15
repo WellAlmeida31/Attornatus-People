@@ -1,4 +1,4 @@
-package com.attornatus.people.domain.endereco;
+package com.attornatus.people.domain.endereco.dto;
 
 import lombok.*;
 

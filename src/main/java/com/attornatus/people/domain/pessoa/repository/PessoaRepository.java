@@ -1,6 +1,8 @@
-package com.attornatus.people.domain.pessoa;
+package com.attornatus.people.domain.pessoa.repository;
 
 import com.attornatus.people.domain.endereco.Endereco;
+import com.attornatus.people.domain.pessoa.Pessoa;
+import com.attornatus.people.domain.pessoa.dto.PessoaDtoNew;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -46,4 +48,14 @@ public interface PessoaRepository extends JpaRepository<Pessoa,Long> {
 """)
     List<Pessoa> existsByPessoaAndEnderecos(String nome, LocalDate nascimento, List<String> cep, List<String> numero);
 
+
+    @Query("""
+            SELECT new com.attornatus.people.domain.pessoa.dto.PessoaDtoNew(p.id, p.nome, p.nascimento,
+            e.localidade, e.bairro, e.cep, e.uf)
+            from Pessoa p
+            inner join p.enderecos e
+            where p.id = ?1
+            and e.principal = true
+            """)
+    PessoaDtoNew findPessoaByIdToDto(Long id);
 }

@@ -1,10 +1,11 @@
-package com.attornatus.people.controller;
+package com.attornatus.people.domain.pessoa.controller;
 
 import com.attornatus.people.domain.endereco.Endereco;
-import com.attornatus.people.domain.endereco.EnderecoDto;
+import com.attornatus.people.domain.endereco.dto.EnderecoDto;
 import com.attornatus.people.domain.pessoa.Pessoa;
-import com.attornatus.people.domain.pessoa.PessoaDto;
-import com.attornatus.people.domain.pessoa.PessoaService;
+import com.attornatus.people.domain.pessoa.dto.PessoaDto;
+import com.attornatus.people.domain.pessoa.dto.Status;
+import com.attornatus.people.domain.pessoa.service.PessoaService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,7 +116,8 @@ public class PessoaControllerTest {
     }
 
     private JsonContent<PessoaDto> getPessoaDtoJsonContent(String numero, String cep, Boolean principal) throws IOException {
-        return pessoaDtoJson.write(new PessoaDto("Test", LocalDate.now().minusYears(10), List.of(EnderecoDto.builder()
+        return pessoaDtoJson.write(new PessoaDto(1L,"Test", "00000000000", Status.ACTIVE, LocalDate.now().minusYears(10), List.of(EnderecoDto.builder()
+                .id(1L)
                 .numero(numero)
                 .cep(cep)
                 .logradouro("Rodovia Augusto Montenegro")

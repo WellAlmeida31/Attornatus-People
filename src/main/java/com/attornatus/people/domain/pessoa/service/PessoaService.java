@@ -1,7 +1,15 @@
-package com.attornatus.people.domain.pessoa;
+package com.attornatus.people.domain.pessoa.service;
 
 import com.attornatus.people.domain.endereco.*;
+import com.attornatus.people.domain.endereco.dto.ConsultaEndereco;
+import com.attornatus.people.domain.endereco.dto.EnderecoDto;
+import com.attornatus.people.domain.endereco.repository.EnderecoRepository;
 import com.attornatus.people.domain.endereco.validation.ValidacaoEndereco;
+import com.attornatus.people.domain.pessoa.*;
+import com.attornatus.people.domain.pessoa.dto.PessoaDto;
+import com.attornatus.people.domain.pessoa.dto.PessoaDtoNew;
+import com.attornatus.people.domain.pessoa.dto.PessoaUpdate;
+import com.attornatus.people.domain.pessoa.repository.PessoaRepository;
 import com.attornatus.people.domain.pessoa.validation.ValidacaoDadosPessoa;
 import com.attornatus.people.infrastructure.ConnectionRemote;
 import jakarta.persistence.EntityNotFoundException;
@@ -26,6 +34,8 @@ public class PessoaService {
     private final EnderecoRepository enderecoRepository;
 
     private final ConnectionRemote connectionRemoteProxy;
+
+    private final ActivatePessoaService activatePessoaService;
     private final ModelMapper modelMapper = new ModelMapper();
 
     private final List<ValidacaoDadosPessoa> validacaoDadosPessoa;
@@ -40,6 +50,7 @@ public class PessoaService {
     public Pessoa cadastroPessoa(PessoaDto pessoaDto){
         validacaoDadosPessoa.forEach(val -> val.validacao(pessoaDto));
         consultaEnderecos(pessoaDto.enderecos());
+        activatePessoaService.sendSnsGlobalNewRegister(pessoaDto.telefone());
         return pessoaRepository.save(new Pessoa(pessoaDto));
     }
 
@@ -47,7 +58,11 @@ public class PessoaService {
         return pessoaRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
-    public List<Endereco> getEnderecosPessoa(Long id, Boolean principal){
+    public PessoaDtoNew getDTOPessoa(Long id){
+        return pessoaRepository.findPessoaByIdToDto(id);
+    }
+
+    public List<Endereco> getEnderecosPessoa(Long id, boolean principal){
         if(principal) return singletonList(pessoaRepository.findEnderecoPrincipalByPessoaId(id).orElseThrow(EntityNotFoundException::new));
         return pessoaRepository.findAllEnderecosByPessoaId(id);
     }
@@ -89,7 +104,7 @@ public class PessoaService {
 
     private void consultaEnderecos(List<EnderecoDto> enderecos) {
         enderecos.forEach(e -> {
-            var endereco = (ConsultaEndereco) getClientData(connectionRemoteProxy.getCep(e.getCep()), ConsultaEndereco.class);
+            ConsultaEndereco endereco = (ConsultaEndereco) getClientData(connectionRemoteProxy.getCep(e.getCep()), ConsultaEndereco.class);
             this.modelMapper.map(endereco, EnderecoDto.class).forEach(e::set);
         });
     }

@@ -1,7 +1,10 @@
-package com.attornatus.people.domain.pessoa;
+package com.attornatus.people.domain.pessoa.service;
 
-import com.attornatus.people.domain.endereco.ConsultaEndereco;
-import com.attornatus.people.domain.endereco.EnderecoDto;
+import com.attornatus.people.domain.endereco.dto.ConsultaEndereco;
+import com.attornatus.people.domain.endereco.dto.EnderecoDto;
+import com.attornatus.people.domain.pessoa.dto.PessoaDto;
+import com.attornatus.people.domain.pessoa.dto.Status;
+import com.attornatus.people.domain.pessoa.service.PessoaService;
 import com.attornatus.people.domain.pessoa.validation.ValidacaoException;
 import com.attornatus.people.infrastructure.ConnectionRemote;
 import jakarta.ws.rs.core.Response;
@@ -91,7 +94,8 @@ class PessoaServiceTest {
     }
 
     private static PessoaDto getPessoaDto(String nome, List<EnderecoDto> enderecoDtos) {
-        return new PessoaDto(nome, LocalDate.now().minusYears(10), enderecoDtos != null ? enderecoDtos: List.of(EnderecoDto.builder()
+        return new PessoaDto(1L, nome, "00000000000", Status.ACTIVE, LocalDate.now().minusYears(10), enderecoDtos != null ? enderecoDtos: List.of(EnderecoDto.builder()
+                .id(1L)
                 .numero("10")
                 .cep("66821-000")
                 .principal(true)

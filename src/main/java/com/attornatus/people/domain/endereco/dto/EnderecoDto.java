@@ -1,5 +1,6 @@
-package com.attornatus.people.domain.endereco;
+package com.attornatus.people.domain.endereco.dto;
 
+import com.attornatus.people.domain.endereco.Endereco;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.api.client.util.Key;
 import com.google.api.client.json.GenericJson;
@@ -20,6 +21,8 @@ import java.util.Objects;
 @JsonIgnoreProperties(value = {"classInfo", "fieldInfos", "unknownKeys","factory","empty"})
 public class EnderecoDto extends GenericJson {
     @Key @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
+    @Key @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String logradouro;
     @Key @PeopleCep
     private String cep;
@@ -39,7 +42,8 @@ public class EnderecoDto extends GenericJson {
     private Boolean principal;
 
     public EnderecoDto(Endereco endereco){
-        this(endereco.getLogradouro(),
+        this(endereco.getId(),
+                endereco.getLogradouro(),
                 endereco.getCep(),
                 endereco.getComplemento(),
                 endereco.getLocalidade(),
@@ -50,6 +54,7 @@ public class EnderecoDto extends GenericJson {
                 endereco.getPrincipal());
     }
 
+    @Override
     public EnderecoDto set(String fieldName, Object value) {return (EnderecoDto) super.set(fieldName, value);}
 
     public EnderecoDto clone() {

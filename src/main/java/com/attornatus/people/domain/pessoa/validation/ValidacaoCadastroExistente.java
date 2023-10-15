@@ -1,8 +1,8 @@
 package com.attornatus.people.domain.pessoa.validation;
 
-import com.attornatus.people.domain.endereco.EnderecoDto;
-import com.attornatus.people.domain.pessoa.PessoaDto;
-import com.attornatus.people.domain.pessoa.PessoaRepository;
+import com.attornatus.people.domain.endereco.dto.EnderecoDto;
+import com.attornatus.people.domain.pessoa.dto.PessoaDto;
+import com.attornatus.people.domain.pessoa.repository.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
